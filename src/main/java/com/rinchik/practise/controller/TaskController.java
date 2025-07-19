@@ -66,4 +66,14 @@ public class TaskController {
 
         return "redirect:/events/list";
     }
+
+    @PostMapping("/tasks/status/change")
+    public String changeTaskStatus(@RequestParam Long taskId) {
+        Task task = taskRepo.findById(taskId).orElseThrow(
+                () -> new EntityNotFoundException("Task not found")
+        );
+        task.changeStatus();
+        taskRepo.save(task);
+        return "redirect:/tasks/list";
+    }
 }

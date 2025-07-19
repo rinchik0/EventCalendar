@@ -25,4 +25,11 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "assignee_id")
     private User assignee;
+
+    public void changeStatus() {
+        switch (status) {
+            case NEW -> status = TaskStatus.IN_PROGRESS;
+            case IN_PROGRESS -> status = TaskStatus.DONE;
+        }
+    }
 }

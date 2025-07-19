@@ -34,11 +34,30 @@
             color: #6c757d;
             text-decoration: line-through;
         }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
+<div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000;">
+    <a th:href="@{/tasks/list}"
+       style="display: inline-block; padding: 6px 12px; background: #0d6efd; color: white; text-decoration: none; border-radius: 4px;">
+        Мои задачи
+    </a>
+    <form th:action="@{/logout}" method="post" style="display: inline-block; margin: 0;">
+        <button type="submit"
+                style="padding: 6px 12px; background: transparent; color: #dc3545; border: 1px solid #dc3545; border-radius: 4px;">
+            Выйти
+        </button>
+    </form>
+</div>
     <div class="container mt-4">
-        <h1>Мероприятия</h1>
+        <div class="mb-3">
+            <h1>Мероприятия</h1>
+        </div>
         <form th:action="@{/events/new}" class="mb-4">
             <button type="submit" class="btn btn-primary">Создать</button>
         </form>

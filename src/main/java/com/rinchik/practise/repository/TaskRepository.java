@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByEvent(Event event);
-    User findByAssignee(User assignee);
+    List<Task> findByAssignee(User assignee);
 }

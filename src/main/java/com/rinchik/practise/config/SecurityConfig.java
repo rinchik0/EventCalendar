@@ -23,12 +23,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/login", "/error").permitAll()
                         .requestMatchers("/events/**").authenticated()
+                        .requestMatchers("/tasks/**").authenticated()
                         .anyRequest().denyAll()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/events", true)
+                        .defaultSuccessUrl("/events/list", true)
                         .failureUrl("/login?error")
                         .permitAll()
                 )

@@ -22,8 +22,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/login", "/error", "/register").permitAll()
-                        .requestMatchers("/events/**").authenticated()
-                        .requestMatchers("/tasks/**").authenticated()
+                        .requestMatchers("/events/**", "/tasks/**").authenticated()
+                        .requestMatchers("/users/**").hasRole("ADMIN")
                         .anyRequest().denyAll()
                 )
                 .formLogin(form -> form
